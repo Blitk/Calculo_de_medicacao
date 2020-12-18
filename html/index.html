@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/Style.css">
+	<script type="text/javascript" src="../js/Scripts.js"></script>
+	<title>Desktop Application</title>
+</head>
+<body>
+	<div style="display: flex;">
+		<div style="width: 50%; height: 100%; ">
+			<h1 id="titulo">Cálculo de Gotejamento</h1>
+			<img src="../images/remedio.png" id="remedio">
+		</div>
+
+		<div style="width: 50%; height: 100%;">
+			<div style="margin-left: 5%; margin-top: 20%;">
+				<p style="">Escolha qual tipo:</p>
+                <input type="radio" id="calculo1" value="mgts_h"/>MGTS/h
+                <br>
+                <br>
+                <input type="radio" id="calculo2" value="mgts_m"/>MGTS/m
+                <br>
+                <br>
+                <input type="radio" id="calculo3" value="gts_h"/>GTS/h
+                <br>
+                <br>
+                <input type="radio" id="calculo4" value="gts_m"/>GTS/m
+                <br>
+                <br>
+                <label for="qtd">Quantidade:</label><br>
+  				<input type="text" id="qtd" name="qtd"><br>
+  				<br>
+  				<label for="tempo">Tempo:</label><br>
+  				<input type="text" id="tempo" name="tempo"><br>
+  				<p id="resultado"> </p>
+                <input type="button" id="botao" value="Calcular" onclick="calcular()">
+                <button onclick="limpar()">Limpar</button>
+                <script type="text/javascript">
+                	function calcular() {
+					var result = 0;
+					if (document.getElementById("calculo1").checked) {
+					    var q = document.getElementById("qtd").value;
+					    var t = document.getElementById("tempo").value;
+					    result = q / t;
+					    result = result.toFixed(2) + " mcgts / min"
+					    
+					}
+
+					if (document.getElementById("calculo2").checked) {
+					    var q = document.getElementById("qtd").value * 60;
+					    var t = document.getElementById("tempo").value;
+					    result = q / t;
+					    result = result.toFixed(2) + " mcgts / min"
+					    
+
+					}
+
+					if (document.getElementById("calculo3").checked) {
+					    var q = document.getElementById("qtd").value;
+					    var t = document.getElementById("tempo").value * 3;
+					    result = q / t;
+					    result = result.toFixed(2) + " gts / min"
+					    
+
+					}
+
+					if (document.getElementById("calculo4").checked) {
+					    var q = document.getElementById("qtd").value * 20;
+					    var t = document.getElementById("tempo").value;
+					    result = q / t;
+					    result = result.toFixed(2) + " gts / min"
+					    
+					}
+					document.getElementById("resultado").innerHTML = result;
+					}
+
+
+					function limpar(){
+					document.getElementById("calculo1").checked = false;
+					document.getElementById("calculo2").checked = false;
+					document.getElementById("calculo3").checked = false;
+					document.getElementById("calculo4").checked = false;
+					document.getElementById("qtd").value = "";
+					document.getElementById("tempo").value = ""
+					document.getElementById("resultado").innerHTML = ""
+					}
+                </script>
+                <br>
+                <br>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
